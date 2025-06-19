@@ -1,77 +1,107 @@
-html,
-body {
-    width: 100%;
-    height: 100%;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "poppins", sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.container-inicio {
-    width: 100%;
-    min-height: 100%;
-    background-image: url(imagens/fundo.png);
-    background-size: cover;
-    background-position: center;
+body {
+    background-color: #5A2DA8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    max-width: 360px;
 }
 
 .logo {
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #FFD93B;
+    color: #5A2DA8;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.forgot {
     display: block;
-    margin: 0 auto;
-    padding: 13%;
+    margin: 15px 0;
+    margin-bottom: 9%;
+    font-size: 20px;
+    color: #E0E0E0;
+    text-decoration: none;
 }
 
-.login-container {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: rgba(255, 199, 62, 0.733);
-    box-shadow: none;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    border-radius: 5    px;
-    width: 284px;
+.novo-poraq {
+    font-size: 18px;
+    margin-bottom: 5%;
+    color: #E0E0E0;
+}
+
+.signup {
+    font-size: 20px;
+    color: #ccc;
+
+}
+
+.signup a {
     display: block;
-    margin: 0 auto;
-    padding: 12px 24px 11px;
-    font-family: "poppins", sans-serif;
-    text-align: center;
+    margin-top: 27px;
+    color: white;
+    text-decoration: none;
 }
 
-.input-container {
-    text-align: left;
-    z-index: 0;
+.linha1,
+.linha2 {
+    height: 1px;
+    width: 70px;
+    background-color: #E0E0E0;
+    ;
+    position: relative;
 }
 
-input {
-    width: 280px;
-    border-radius: 2px;
-    height: 25px;
-    color: rgba(255, 255, 255, 0.87);
-    border: 2px solid white;
-    background-color: transparent;
-    box-shadow: none;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    border-radius: 2px;
+.linha1 {
+    margin-bottom: -4%;
 }
 
-.button-container {
-    display: flex;
-    color:white;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    border-radius: 2px;
-    height: 30px;
-    background-color: transparent;
-    border: 2px solid white;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-}
-.button-container:hover{
-    transition: 300ms ease-in-out;
-    background-color: white;
-    color: black;
+.linha2 {
+    margin-top: -9%;
+    margin-left: 78%;
 }
