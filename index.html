@@ -1,28 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/skq7ntn.css">
+    <title>FinPlay - Login</title>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
+
 <body>
-    <div class="container-inicio"><!--Inicio do site-->
-        <img src="imagens/logo.png" alt="logo" class="logo"><!--Logo do site-->
-        <div class="login-container">
-            <h2>FinPlay</h2>
-            <form action="login.php" method="POST">
-                <div  class="input-container">
-                <label>Usuario:</label>
-                <input type="text" name="email" required><br><br>
-                <label>Senha:</label>
-                <input type="password" name="senha" required><br><br>
-                </div>
-                <button type="submit" class="button-container button2 ">Entrar</button>
-            </form>
-            <br>
+    <div class="container">
+        <img src="imagens/logo.png" alt="FinPlay Logo" class="logo">
+        <h1>Bem-vindo<br>de Volta!</h1>
+
+        <form class="login-form">
+            <input type="email" placeholder="E-mail" required>
+            <div class="password-field">
+                <input type="password" placeholder="Senha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <a href="#" class="forgot">Esqueceu sua senha?</a>
+        <div class="linha1"></div>
+        <div class="novo-poraq">
+            <p>Novo por aqui?</p>
+        </div>
+        <div class="linha2"></div>
+        <div class="signup">
+            <a href="#">Crie uma conta</a>
         </div>
     </div>
 </body>
+
 </html>
