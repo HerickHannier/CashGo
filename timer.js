@@ -1,23 +1,30 @@
 function countdown() {
-        const timerDisplay = document.getElementById('timer');
-        const targetDate = new Date('2025-06-22T23:59:59');
-        const now = new Date();
-        const timeLeft = targetDate - now;
+        const timerEl = document.getElementById('timer');
+        const barEl = document.querySelector('.progress-fill');
 
-        if (timeLeft <= 0) {
-            timerDisplay.textContent = "Tempo Esgotado!";
+        const endTime = new Date('2025-06-23T15:30:00');
+        const now = new Date();
+
+        const total = endTime - now; // tempo total a partir do momento atual
+        const duration = endTime - new Date(); // usado para manter total constante
+
+        if (total <= 0) {
+            timerEl.textContent = "Tempo Esgotado!";
+            barEl.style.width = "0%";
             return;
         }
 
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        if (days > 0) {
-            timerDisplay.textContent = `${days}dias: ${hours}:${minutes}:${seconds}`;
-        } else {
-            timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;    
-        }
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+        const hours = String(Math.floor((total / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        const minutes = String(Math.floor((total / (1000 * 60)) % 60)).padStart(2, '0');
+        const seconds = String(Math.floor((total / 1000) % 60)).padStart(2, '0');
+
+        timerEl.textContent = days > 0
+            ? `${days}dias: ${hours}:${minutes}:${seconds}`
+            : `${hours}:${minutes}:${seconds}`;
+
+        const percent = (total / duration) * 100;
+        barEl.style.width = `${percent}%`;
 
         setTimeout(countdown, 1000);
     }
