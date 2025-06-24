@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - App Investidor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">SETTINGS</h1>
+    </div>
+
+    <div class="settings-container">
+        <div class="setting-card-one" onclick="navigateTo('accessibility')">
+            <div class="setting-icon accessibility-icon">
+                <i class="fa-sharp fa-solid fa-universal-access fa-xl"></i>   
+            </div>
+            <div class="setting-content">
+                <div class="setting-title">Acessibilidade</div>
+                <div class="setting-description">Ajuste suas preferências de acessibilidade</div>
+            </div>
+        </div>
+
+        <div class="setting-card-duo" onclick="navigateTo('privacy')">
+            <div class="setting-icon privacy-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="setting-content">
+                <div class="setting-title">Privacidade</div>
+                <div class="setting-description">Gerencie suas configurações de privacidade</div>
+            </div>
+        </div>
+
+        <div class="setting-card-one" onclick="navigateTo('account')">
+            <div class="setting-icon account-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="setting-content">
+                <div class="setting-title">Conta</div>
+                <div class="setting-description">Ver informações da conta</div>
+            </div>
+        </div>
+
+        <div class="setting-card-duo" onclick="navigateTo('about')">
+            <div class="setting-icon about-icon">
+                <i class="fas fa-info"></i>
+            </div>
+            <div class="setting-content">
+                <div class="setting-title">Sobre nós</div>
+                <div class="setting-description">Saiba mais sobre nós</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="logout-section">
+        <button class="logout-button" onclick="logout()">
+            SAIR
+        </button>
+        <a href="config.html"></a>
+    </div>
+</body>
+</html>
