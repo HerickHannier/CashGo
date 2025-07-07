@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recompensas - App Investidor</title>
+    <link rel="stylesheet" href="rewards.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ===================
+         CABEÇALHO
+    =================== -->
+    <div class="header">
+        <button class="back-button" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">RECOMPENSAS</h1>
+    </div>
+    <div class="xp-badge">235 XP</div>
+
+    <!-- ===================
+         GRADE DE RECOMPENSAS
+    =================== -->
+    <div class="rewards-grid">
+        <!-- Cartão 1: Conta Grátis -->
+        <div class="reward-card with-button">
+            <div class="reward-icon z-logo"></div>
+            <div class="reward-title">Conta<br>Grátis</div>
+            <button class="redeem-button" onclick="redeemReward('conta-gratis')">
+                Resgatar
+            </button>
+        </div>
+
+        <!-- Cartão 2: R$10 de Cashback -->
+        <div class="reward-card">
+            <div class="reward-icon shopping-bag">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>
+            <div class="reward-title">R$10 de<br>Cashback</div>
+            <div class="xp-value">200 XP</div>
+            <button class="redeem-button" onclick="redeemReward('cashback')">
+                Resgatar
+            </button>   
+        </div>
+
+        <!-- Cartão 3: Vale-Presente -->
+        <div class="reward-card">
+            <div class="reward-icon gift-box">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="reward-title">Vale-Presente</div>
+            <div class="reward-subtitle">Loja de<br>Eletrônicos</div>
+            <div class="xp-value">300 XP</div>
+            <button class="redeem-button" onclick="redeemReward('presente')">
+                Resgatar
+            </button>
+        </div>
+
+        <!-- Cartão 4: Cupom de 10% -->
+        <div class="reward-card">
+            <div class="reward-icon coupon">
+                <i class="fas fa-percentage"></i>
+            </div>
+            <div class="reward-title">Cupom de<br>10%</div>
+            <div class="reward-subtitle">Roupas Esportivas</div>
+            <div class="xp-value">150 XP</div>
+            <button class="redeem-button" onclick="redeemReward('desconto')">
+                Resgatar
+            </button>
+        </div>
+    </div>
+    <script src="rewards.js"></script>
+</body>
+</html>

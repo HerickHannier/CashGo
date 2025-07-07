@@ -1,0 +1,334 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===================
+           CABEÇALHO
+        =================== */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 0;
+            background: none;
+            border: none;
+            color: #B794F6;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(183, 148, 246, 0.1);
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 800;
+            text-align: center;
+            margin-left: 5%;
+            width: 100%;
+            letter-spacing: 2px;
+        }
+
+        .xp-badge {
+            background: rgba(45, 27, 105, 0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            width: 25%;
+            margin-bottom: 10px;
+            margin-left: 75%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===================
+           GRADE DE RECOMPENSAS
+        =================== */
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+            margin-bottom: 30px;
+        }
+
+        .reward-card {
+            background: #F4EDFF;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .reward-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border-radius: 12px;
+        }
+
+        /* Ícones específicos */
+        .z-logo {
+            background: linear-gradient(135deg, #FF8A00 0%, #1E90FF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .z-logo::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #FF8A00;
+            transform: rotate(45deg) skew(15deg, 15deg);
+            top: 5px;
+            left: 5px;
+        }
+
+        .z-logo::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #1E90FF;
+            transform: rotate(-45deg) skew(-15deg, -15deg);
+            bottom: 8px;
+            right: 8px;
+        }
+
+        .shopping-bag {
+            background: #FF8A00;
+            color: white;
+        }
+
+        .gift-box {
+            background: #FF4757;
+            color: white;
+        }
+
+        .coupon {
+            background: #2ED573;
+            color: white;
+        }
+
+        .reward-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2D1B69;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .reward-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            color: #372867;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .redeem-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2D1B69;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .redeem-button:hover {
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            transform: translateY(-1px);
+        }
+
+        .xp-value {
+            position: absolute;
+            bottom: 2.5px;
+            right: 65px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6C3DD0;
+        }
+
+        /* Card específico com botão */
+        .reward-card.with-button {
+            padding-bottom: 60px;
+        }
+
+        .reward-card.with-button .redeem-button {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+        }
+
+        /* ===================
+           RODAPÉ COM LOGO
+        =================== */
+        .footer {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo .fin {
+            color: #8B5CF6;
+        }
+
+        .logo .play {
+            color: #3B82F6;
+        }
+
+        .logo .accent {
+            position: absolute;
+            top: -5px;
+            right: 45%;
+            font-size: 12px;
+            color: #FF4757;
+        }
+
+        /* ===================
+           RESPONSIVIDADE
+        =================== */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .xp-badge {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+
+            .rewards-grid {
+                gap: 12px;
+            }
+
+            .reward-card {
+                padding: 16px;
+                min-height: 140px;
+            }
+
+            .reward-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .reward-title {
+                font-size: 16px;
+            }
+
+            .reward-subtitle {
+                font-size: 13px;
+            }
+
+            .redeem-button {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .reward-card {
+                padding: 14px;
+                min-height: 130px;
+            }
+
+            .reward-title {
+                font-size: 15px;
+            }
+
+            .reward-subtitle {
+                font-size: 12px;
+            }
+        }
+
+        /* ===================
+           ANIMAÇÕES
+        =================== */
+        .reward-card {
+            animation: fadeInScale 0.6s ease forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .reward-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reward-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .reward-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .reward-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
