@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
+    min-height: 100vh;
+    color: white;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    color: #B794F6;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgba(183, 148, 246, 0.1);
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 2px;
+}
+
+.mission-card {
+    background: #F4E8FF;
+    border-radius: 20px;
+    padding: 8px;
+    margin-bottom: 20px;
+    color: #2D1B69;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+}
+
+.mission-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5%;
+    color: #2D1B69;
+}
+
+.mission-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.mission-coin {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 3px solid #FFB000;
+}
+
+.mission-hoje {
+    margin: 3%;
+    background-color: #ffffff;
+    padding: 5%;
+    border-radius: 25px;
+}
+
+.mission-semanal {
+    margin: 3%;
+    background-color: #ffffff;
+    padding: 5%;
+    border-radius: 25px;
+}
+
+.mission-mensal {
+    margin: 3%;
+    background-color: #ffffff;
+    padding: 5%;
+    border-radius: 25px;
+}
+
+.mission-coin i {
+    color: white;
+    font-size: 24px;
+}
+
+.mission-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2D1B69;
+}
+
+.accept-button {
+    background: #FFD700;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D1B69;
+    cursor: pointer;
+    margin-left: 25%;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.accept-button:hover {
+    transform: translateY(-2px);
+}
+
+.progress-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+    width: 65%;
+    border-radius: 10px;
+}
+
+.timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2D1B69;
+}
