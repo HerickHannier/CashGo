@@ -2,7 +2,7 @@ function countdown() {
         const timerEl = document.getElementById('timer');
         const barEl = document.querySelector('.progress-fill');
 
-        const endTime = new Date('2025-06-25T20:00:00');
+        const endTime = new Date('2025-07-07T20:00:00');
         const now = new Date();
 
         const total = endTime - now; // tempo total a partir do momento atual
