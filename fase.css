@@ -1,159 +1,158 @@
 body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: rgb(251, 248, 253);
-            color: #2c1e56;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(251, 248, 253);
+    color: #2c1e56;
+}
 
-        .fase {
-            background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
-            position: absolute;
-            bottom: 0%;
-            width: 100vw;
-            height: 15%;
-            padding: 20px;
-            border-radius: 30px 30px 0px 0px;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-        }
+.fase {
+    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
+    position: absolute;
+    bottom: 0%;
+    width: 100vw;
+    height: 15%;
+    padding: 20px;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
 
-        .titulo {
-            font-size: 22px;
-            font-weight: bold;
-            color: white;
-            padding-bottom: 3px;
-            text-align: center;
-            background-color: #6c27b3;
-        }
+.titulo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #6c27b3;
+}
 
-        .quiz-item {
-            margin-top: 20px;
-            display: none;
-            opacity: 0;
-            font-weight: bold;
-            font-size: 22px;
-            transition: opacity 0.5s ease-in-out;
-        }
+.quiz-item {
+    margin-top: 20px;
+    display: none;
+    opacity: 0;
+    font-weight: bold;
+    font-size: 22px;
+    transition: opacity 0.5s ease-in-out;
+}
 
-        .quiz-item.active {
-            display: block;
-            opacity: 1;
-        }
+.quiz-item.active {
+    display: block;
+    opacity: 1;
+}
 
-        .quiz-item button {
-            background: #FFD700;
-            border: none;
-            border-radius: 10px;
-            padding: 8px 20px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #2D1B69;
-            cursor: pointer;
-            width: 100%;
-            height: 50%;
-            margin-bottom: 5px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
-        }
+.quiz-item button {
+    background: #FFD700;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2D1B69;
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
 
 
-        #resultado {
-            margin-top: 20px;
-            font-weight: bold;
-        }
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+}
 
-        .input-group {
-            margin: 10px 0;
-        }
+.input-group {
+    margin: 10px 0;
+}
 
-        .hidden {
-            display: none;
-        }
+.hidden {
+    display: none;
+}
 
-        .btn {
-            padding: 10px 16px;
-            font-size: 15px;
-            margin-top: 10px;
-            background: #6c27b3;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-        }
+.btn {
+    padding: 10px 16px;
+    font-size: 15px;
+    margin-top: 10px;
+    background: #6c27b3;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
 
-        .vita-img {
-            width: 40%;
-            max-width: 500px;
-            margin-top: 5%;
-            margin-left: 2%;
-            /* ajuste conforme necessário */
-            display: block;
-        }
+.vita-img {
+    width: 40%;
+    max-width: 500px;
+    margin-top: 5%;
+    margin-left: 2%;
+    /* ajuste conforme necessário */
+    display: block;
+}
 
-        .speech-bubble {
-            position: absolute;
-            top: 60px;
-            /* posição vertical */
-            left: 43%;
-            /* ajuste horizontal até ficar próximo à mão da personagem */
-            width: 180px;
-            background: #fceec2;
-            border-radius: 12px;
-            text-align: left;
-            padding: 15px;
-            color: #2D1B69;
-            font-weight: bold;
-            font-size: medium;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+.speech-bubble {
+    position: absolute;
+    top: 60px;
+    /* posição vertical */
+    left: 43%;
+    /* ajuste horizontal até ficar próximo à mão da personagem */
+    width: 190px;
+    background: #fceec2;
+    border-radius: 12px;
+    text-align: left;
+    padding: 15px;
+    color: #2D1B69;
+    font-weight: bold;
+    font-size: medium;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-        /* triângulo apontando para a esquerda inferior */
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: 50px;
-            left: -18px;
-            /* move o triângulo para fora do balão */
-            width: 0;
-            height: 0;
-            border-top: 18px solid transparent;
-            border-bottom: -7px solid transparent;
-            border-right: 20px solid #fceec2;
+/* triângulo apontando para a esquerda inferior */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    left: -18px;
+    /* move o triângulo para fora do balão */
+    width: 0;
+    height: 0;
+    border-top: 18px solid transparent;
+    border-bottom: -7px solid transparent;
+    border-right: 20px solid #fceec2;
 
-        }
+}
 
-        .container_fone {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.container_fone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .fone {
-            width: 50%;
-            background: transparent;
-        }
+.fone {
+    width: 50%;
+}
 
-        .progress-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.progress-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .progress-bar {
-            flex: 1;
-            height: 10px;
-            width: 80%;
-            background: rgba(139, 92, 246, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 2%;
-            margin-right: 2%;
-            margin-left: 2%;
-        }
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    width: 80%;
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
-            width: 65%;
-            border-radius: 10px;
-        }
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+    width: 65%;
+    border-radius: 10px;
+}
