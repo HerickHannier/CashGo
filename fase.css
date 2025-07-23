@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: rgb(251, 248, 253);
     color: #2c1e56;
+    overflow-x: hidden;
 }
 
 .fase {
