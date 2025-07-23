@@ -380,9 +380,13 @@
                 font-size: 15px;
             }
 
-            .mission-title,
             .progress-title {
                 font-size: 24px;
+            }
+
+            .mission-title{
+                font-size: 20px;
+
             }
 
             .mission-text {
