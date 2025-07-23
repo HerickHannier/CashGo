@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="fase.css">
+    <title>CashGo - Fase 1</title>
+</head>
+
+<body>
+
+
+    <div class="progress-section">
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="timer" id="timer"></div>
+    </div>
+    <img src="Fin-Falando.png" alt="" class="vita-img">
+    <div class="speech-bubble">
+        Olá! Eu sou a Vita Sua guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
+    </div>
+
+    <div class="quiz-item active" id="quiz1">
+        <p>1. Fone Bluetooth novo:</p>
+        <div class="container_fone">
+            <img src="fone.png" alt="" class="fone">
+        </div>
+        <div class="fase">
+            <button onclick="responder(this, 'desejo', 'quiz2')">Desejo</button>
+            <button onclick="responder1(this, 'necessidade', 'quiz2')">Necessidade</button>
+        </div>
+    </div>
+
+    <div class="quiz-item" id="quiz2">
+        <p>2. Transporte para escola:</p>
+        <div class="fase">
+            <button onclick="responder(this, 'necessidade', 'quiz3')">Necessidade</button>
+            <button onclick="responder1(this, 'desejo', 'quiz3')">Desejo</button>
+        </div>
+    </div>
+
+    <div class="quiz-item" id="quiz3">
+        <p>3. Camiseta de R$200 da moda:</p>
+        <div class="fase">
+            <button onclick="responder(this, 'desejo', 'quiz4')">Desejo</button>
+            <button onclick="responder1(this, 'necessidade', 'quiz4')">Necessidade</button>
+        </div>
+    </div>
+
+    <div class="quiz-item" id="quiz4">
+        <p><strong>Anote 2 gastos reais seus dessa semana:</strong></p>
+        <div class="input-group">
+            <input type="text" placeholder="Gasto 1" id="gasto1" />
+            <select id="tipo1">
+                <option value="desejo">Desejo</option>
+                <option value="necessidade">Necessidade</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Gasto 2" id="gasto2" />
+            <select id="tipo2">
+                <option value="desejo">Desejo</option>
+                <option value="necessidade">Necessidade</option>
+            </select>
+        </div>
+        <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
+    </div>
+
+    <div class="quiz-item" id="quiz5">
+        <div class="fase">
+            <p><strong>Missão com compromisso real</strong> - Topa guardar R$5 até amanhã?</p>
+            <button onclick="aceitarMissao(true)" class="btn">Sim, eu topo!</button>
+            <button onclick="aceitarMissao(false)" class="btn">Não por enquanto</button>
+            <div id="respostaMissao"></div>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="fase.js"></script>
+</body>
+
+</html>
