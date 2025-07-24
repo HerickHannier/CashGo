@@ -9,6 +9,17 @@
 </head>
 
 <body>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
     <div class="progress-section">
         <div class="progress-bar">
             <div class="progress-fill"></div>
@@ -21,7 +32,7 @@
     </div>
 
     <div class="quiz-item active" id="quiz1">
-        <p>1. Fone Bluetooth novo:</p>
+        <p>1. A Júlia já tem um fone Bluetooth, mas agora quer o modelo mais recente...</p>
         <div class="container_fone">
             <img src="imagens/fone.png" alt="" class="fone">
         </div>
@@ -32,7 +43,7 @@
     </div>
 
     <div class="quiz-item" id="quiz2">
-        <p>2. Transporte para escola:</p>
+        <p>2. João precisa de um transporte para chegar ao SENAC... isso é?</p>
         <div class="fase">
             <button onclick="responder(this, 'necessidade', 'quiz3')">Necessidade</button>
             <button onclick="responder1(this, 'desejo', 'quiz3')">Desejo</button>
@@ -48,7 +59,7 @@
     </div>
 
     <div class="quiz-item" id="quiz4">
-        <p><strong>Anote 2 gastos reais seus dessa semana:</strong></p>
+        <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
         <div class="input-group">
             <input type="text" placeholder="Gasto 1" id="gasto1" />
             <select id="tipo1">
