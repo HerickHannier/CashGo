@@ -1,23 +1,21 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: rgb(251, 248, 253);
     color: #2c1e56;
-    overflow-x: hidden;
+}
+p{
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: large;
 }
 
 .fase {
     background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
     position: absolute;
     bottom: 0%;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    width: 100vw;
     height: 15%;
     padding: 20px;
     border-radius: 30px 30px 0px 0px;
