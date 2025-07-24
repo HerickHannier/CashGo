@@ -1,7 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* impede rolagem lateral */
     background-color: rgb(251, 248, 253);
     color: #2c1e56;
 }
