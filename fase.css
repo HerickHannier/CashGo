@@ -233,8 +233,12 @@ p {
 .bubble:hover {
     transform: scale(1.1);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
 }
+
+.bubble:focus {
+     outline: none;
+     border: none;
+   }
 
 .bubble img {
     width: 80px;
