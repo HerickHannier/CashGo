@@ -228,6 +228,7 @@ p {
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    outline: none;
 }
 
 .bubble:hover {
@@ -236,8 +237,8 @@ p {
 }
 
 .bubble:focus {
-     outline: none;
-     border: none;
+    outline: none;
+    box-shadow: none;
    }
 
 .bubble img {
