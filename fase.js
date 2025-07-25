@@ -183,10 +183,13 @@ function handleBubbleClick(event) {
     if (!gameActive || gamePaused) return;
 
     const bubble = event.currentTarget;
-    const isEssential = bubble.dataset.essential === 'true';
 
-    // Adicionar classe clicked para animação instantânea
+    // ⚠️ Impede múltiplos cliques
+    if (bubble.classList.contains('clicked')) return;
+
     bubble.classList.add('clicked');
+
+    const isEssential = bubble.dataset.essential === 'true';
 
     if (isEssential) {
         score.correct++;
@@ -204,13 +207,14 @@ function handleBubbleClick(event) {
 
     updateScore();
 
-    // Remover bolha instantaneamente após animação rápida
+    // Remove a bolha após animação de clique
     setTimeout(() => {
         if (bubble.parentNode) {
             bubble.remove();
         }
-    }, 100); // Reduzido de 500ms para 100ms
+    }, 500);
 }
+
 
 function showQuiz4() {
     gameActive = false;
