@@ -2,29 +2,26 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html, body {
     margin: 0;
     padding: 0;
+    max-width: 100vw;
     overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%) !important;
     color: #2c1e56;
 }
 
-html,
-body {
-    max-width: 100vw;
-    overflow-x: hidden;
-}
-
+/* Parágrafos com margem */
 p {
     margin-left: 2%;
     margin-right: 2%;
     font-size: large;
 }
 
+/* Fase roxa */
 .fase {
-    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
+    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%) !important;
     position: absolute;
     bottom: 0%;
     width: 100vw;
@@ -34,6 +31,7 @@ p {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Título fase */
 .titulo {
     font-size: 22px;
     font-weight: bold;
@@ -43,6 +41,7 @@ p {
     background-color: #6c27b3;
 }
 
+/* Quiz */
 .quiz-item {
     margin-top: 20px;
     display: none;
@@ -51,12 +50,10 @@ p {
     font-size: 22px;
     transition: opacity 0.5s ease-in-out;
 }
-
 .quiz-item.active {
     display: block;
     opacity: 1;
 }
-
 .quiz-item button {
     background: #FFD700;
     border: none;
@@ -86,6 +83,7 @@ p {
     margin: 10px 0;
 }
 
+/* Botões padrões */
 .btn {
     padding: 10px 16px;
     font-size: 15px;
@@ -97,6 +95,7 @@ p {
     cursor: pointer;
 }
 
+/* Mascote e fala */
 .vita-img {
     width: 40%;
     max-width: 500px;
@@ -104,7 +103,6 @@ p {
     margin-left: 2%;
     display: block;
 }
-
 .speech-bubble {
     position: absolute;
     top: 60px;
@@ -119,7 +117,6 @@ p {
     font-size: medium;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 .speech-bubble::after {
     content: '';
     position: absolute;
@@ -132,6 +129,7 @@ p {
     border-right: 20px solid #fceec2;
 }
 
+/* Container do jogo */
 .game-container {
     position: relative;
     width: 100vw;
@@ -139,12 +137,12 @@ p {
     overflow: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
 .game-container.hidden {
     opacity: 0;
     visibility: hidden;
 }
 
+/* Painel de pontuação */
 .score {
     position: absolute;
     top: 20px;
@@ -159,6 +157,7 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Botão de pausar */
 .pause-button {
     margin-top: 20px;
     background: rgba(255, 255, 255, 0.2);
@@ -172,37 +171,29 @@ p {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .pause-button:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
-
 .pause-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
 }
 
+/* Aviso de penalidade */
 .penalty-warning {
     color: #ff6b6b;
     font-size: 0.9rem;
     margin-top: 5px;
     animation: pulse 1s infinite;
 }
-
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
+/* Bolhas */
 .bubble {
     position: absolute;
     width: 90px;
@@ -216,101 +207,58 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    outline: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    -webkit-tap-highlight-color: transparent;
     user-select: none;
+    pointer-events: auto;
 }
-
+.bubble.clicked {
+    pointer-events: none;
+    animation: bubblePopInstant 0.1s ease-out forwards;
+}
 .bubble:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
-
-.bubble:focus {
-    outline: none;
-    box-shadow: none;
-}
-
 .bubble img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    object-fit: cover;
+    pointer-events: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    user-select: none;
+}
+
+/* Remove azul no clique */
+.bubble, .bubble img, img {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
     -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    pointer-events: none;
 }
 
-.bubble img:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-img:focus {
-    outline: none;
-    border: none;
-    box-shadow: none;
-}
-
-img {
-    -webkit-tap-highlight-color: transparent;
-}
-
+/* Tipos de bolhas */
 .bubble.essential {
     border-color: #4CAF50;
     box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
 }
-
 .bubble.desire {
     border-color: #FF5722;
     box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
 }
 
-/* Animação instantânea para remoção */
-.bubble.clicked {
-    animation: bubblePopInstant 0.1s ease-out forwards;
-}
-
+/* Animações */
 @keyframes bubblePopInstant {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
 }
-
 @keyframes bubbleRise {
-    from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-    }
+    from { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
-/* Toast Notifications */
+/* Toasts */
 .toast-container {
     position: fixed;
     top: 120px;
@@ -320,14 +268,11 @@ img {
     flex-direction: column;
     gap: 10px;
     pointer-events: none;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
 .toast-container.hidden {
     opacity: 0;
     visibility: hidden;
 }
-
 .toast {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -335,94 +280,75 @@ img {
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transform: translateX(100%);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     max-width: 300px;
     display: flex;
     align-items: center;
     gap: 12px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .toast.show {
     transform: translateX(0);
     opacity: 1;
 }
-
 .toast.success {
     border-left: 4px solid #4CAF50;
 }
-
 .toast.error {
     border-left: 4px solid #FF5722;
 }
-
 .toast.penalty {
     border-left: 4px solid #ff6b6b;
     background: rgba(255, 107, 107, 0.1);
 }
-
 .toast-icon {
     font-size: 1.5rem;
     flex-shrink: 0;
 }
-
-.toast.success .toast-icon {
-    color: #4CAF50;
-}
-
-.toast.error .toast-icon {
-    color: #FF5722;
-}
-
-.toast.penalty .toast-icon {
-    color: #ff6b6b;
-}
-
+.toast.success .toast-icon { color: #4CAF50; }
+.toast.error .toast-icon { color: #FF5722; }
+.toast.penalty .toast-icon { color: #ff6b6b; }
 .toast-content {
     flex: 1;
 }
-
 .toast-title {
     font-weight: bold;
     font-size: 1rem;
     margin-bottom: 2px;
     color: #333;
 }
-
 .toast-message {
     font-size: 0.9rem;
     color: #666;
     line-height: 1.3;
 }
 
+/* Mobile */
 @media (max-width: 768px) {
     .bubble {
         width: 70px;
         height: 70px;
     }
-
     .bubble img {
         width: 50px;
         height: 50px;
     }
-
     .score {
         font-size: 1rem;
         padding: 10px 20px;
     }
-
     .toast-container {
         top: 100px;
         right: 10px;
         left: 10px;
     }
-
     .toast {
         max-width: none;
     }
 }
 
+/* Cartão de instruções */
 .info-card {
     background: rgba(139, 92, 246, 0.3);
     backdrop-filter: blur(10px);
@@ -430,9 +356,8 @@ img {
     padding: 10px;
     width: 100%;
     max-width: 350px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 20px;
 }
 
 ul {
@@ -483,12 +408,10 @@ ul {
     max-width: 350px;
     justify-content: center;
 }
-
 .start-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
 }
-
 .start-button:active {
     transform: translateY(0px);
 }
