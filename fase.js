@@ -33,15 +33,33 @@ let gamePaused = false;
 let bubbleCreationInterval;
 let pauseButton = document.getElementById('pauseButton');
 
-function updateScore() {
-    document.getElementById('correct').textContent = score.correct;
-    document.getElementById('wrong').textContent = score.wrong;
+// Cache para elementos DOM
+const scoreElements = {
+    correct: null,
+    wrong: null,
+    penaltyWarning: null
+};
 
-    const penaltyWarning = document.getElementById('penaltyWarning');
+// Inicializar cache de elementos
+function initializeElements() {
+    scoreElements.correct = document.getElementById('correct');
+    scoreElements.wrong = document.getElementById('wrong');
+    scoreElements.penaltyWarning = document.getElementById('penaltyWarning');
+    gameContainer = document.getElementById('gameContainer');
+    toastContainer = document.getElementById('toastContainer');
+    pauseButton = document.getElementById('pauseButton');
+}
+
+function updateScore() {
+    if (!scoreElements.correct) initializeElements();
+
+    scoreElements.correct.textContent = score.correct;
+    scoreElements.wrong.textContent = score.wrong;
+
     if (score.wrong % 2 === 1) {
-        penaltyWarning.style.display = 'block';
+        scoreElements.penaltyWarning.style.display = 'block';
     } else {
-        penaltyWarning.style.display = 'none';
+        scoreElements.penaltyWarning.style.display = 'none';
     }
 
     if (score.correct >= 10) {
@@ -68,7 +86,6 @@ function togglePause() {
     if (!gameActive) return;
 
     gamePaused = !gamePaused;
-
     const existingBubbles = gameContainer.querySelectorAll('.bubble');
 
     if (gamePaused) {
@@ -114,7 +131,11 @@ function showToast(type, title, message, duration = 3000) {
 
     toastContainer.appendChild(toast);
 
-    setTimeout(() => toast.classList.add('show'), 100);
+    // Usar requestAnimationFrame para melhor performance
+    requestAnimationFrame(() => {
+        toast.classList.add('show');
+    });
+
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
@@ -136,21 +157,25 @@ function createBubble() {
     const img = document.createElement('img');
     img.src = imageSrc;
     img.alt = isEssential ? 'Item essencial' : 'Item de desejo';
+    img.loading = 'lazy'; // Lazy loading para melhor performance
     bubble.appendChild(img);
 
-    const startX = Math.random() * (window.innerWidth - 80);
+    const startX = Math.random() * (window.innerWidth - 90);
     bubble.style.left = startX + 'px';
     bubble.style.bottom = '-100px';
 
-    const duration = Math.random() * 4 + 5;
+    const duration = Math.random() * 3 + 4; // Reduzido para mais dinamismo
     bubble.style.animation = `bubbleRise ${duration}s linear forwards`;
 
-    bubble.addEventListener('click', handleBubbleClick);
+    bubble.addEventListener('click', handleBubbleClick, { once: true }); // Usar once: true para melhor performance
 
     gameContainer.appendChild(bubble);
 
+    // Remover bolha automaticamente após a animação
     setTimeout(() => {
-        if (bubble.parentNode) bubble.remove();
+        if (bubble.parentNode && !bubble.classList.contains('clicked')) {
+            bubble.remove();
+        }
     }, duration * 1000);
 }
 
@@ -160,6 +185,7 @@ function handleBubbleClick(event) {
     const bubble = event.currentTarget;
     const isEssential = bubble.dataset.essential === 'true';
 
+    // Adicionar classe clicked para animação instantânea
     bubble.classList.add('clicked');
 
     if (isEssential) {
@@ -178,9 +204,12 @@ function handleBubbleClick(event) {
 
     updateScore();
 
+    // Remover bolha instantaneamente após animação rápida
     setTimeout(() => {
-        if (bubble.parentNode) bubble.remove();
-    }, 500);
+        if (bubble.parentNode) {
+            bubble.remove();
+        }
+    }, 100); // Reduzido de 500ms para 100ms
 }
 
 function showQuiz4() {
@@ -188,6 +217,7 @@ function showQuiz4() {
     gamePaused = false;
     clearTimeout(bubbleCreationInterval);
 
+    // Remover todas as bolhas existentes instantaneamente
     const existingBubbles = gameContainer.querySelectorAll('.bubble');
     existingBubbles.forEach(b => b.remove());
 
@@ -232,7 +262,7 @@ function startGame() {
     function scheduleBubble() {
         if (!gameActive || gamePaused) return;
         createBubble();
-        const delay = Math.random() * 1000 + 500;
+        const delay = Math.random() * 800 + 400; // Intervalo otimizado
         bubbleCreationInterval = setTimeout(scheduleBubble, delay);
     }
 
@@ -253,7 +283,17 @@ function proximo(proximoId) {
     }
 }
 
-// Inicializa score ao carregar a página
+// Inicializar quando a página carregar
 window.addEventListener('load', () => {
+    initializeElements();
     updateScore();
+});
+
+// Otimização para dispositivos móveis
+window.addEventListener('resize', () => {
+    // Debounce para evitar muitas execuções
+    clearTimeout(window.resizeTimeout);
+    window.resizeTimeout = setTimeout(() => {
+        // Reposicionar elementos se necessário
+    }, 250);
 });
