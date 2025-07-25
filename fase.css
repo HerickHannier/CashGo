@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
+    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%)!important;
     color: #2c1e56;
 }
 
