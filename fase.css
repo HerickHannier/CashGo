@@ -7,11 +7,12 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%)!important;
+    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%) !important;
     color: #2c1e56;
 }
 
-html, body {
+html,
+body {
     max-width: 100vw;
     overflow-x: hidden;
 }
@@ -191,8 +192,15 @@ p {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
 }
 
 .bubble {
@@ -226,8 +234,11 @@ p {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    outline: none;
-    border: none;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.5);
     pointer-events: none;
@@ -268,6 +279,7 @@ img {
         transform: scale(1);
         opacity: 1;
     }
+
     100% {
         transform: scale(0);
         opacity: 0;
@@ -279,12 +291,15 @@ img {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 1;
     }
+
     90% {
         opacity: 1;
     }
+
     to {
         transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
