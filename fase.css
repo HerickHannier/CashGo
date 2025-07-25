@@ -262,6 +262,10 @@ img:focus {
     box-shadow: none;
 }
 
+img {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .bubble.essential {
     border-color: #4CAF50;
     box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
