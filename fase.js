@@ -69,6 +69,7 @@ function updateScore() {
 
 function startGameFromInstructions() {
     document.getElementById('instructionsScreen').classList.add('hidden');
+    document.getElementById('vlibras').classList.add('hidden');
     document.getElementById('vitaImg').style.display = 'none';
     document.getElementById('vitaSpeech').style.display = 'none';
     gameContainer.classList.remove('hidden');
@@ -173,11 +174,11 @@ function createBubble() {
     gameContainer.appendChild(bubble);
 
     // Remover bolha automaticamente após a animação
-    setTimeout(() => {
-        if (bubble.parentNode && !bubble.classList.contains('clicked')) {
-            bubble.remove();
-        }
-    }, duration * 1000);
+    //setTimeout(() => {
+        //if (bubble.parentNode && !bubble.classList.contains('clicked')) {
+        //    bubble.remove();
+        //}
+    //}, duration * 1000);
 }
 
 function handleBubbleClick(event) {
