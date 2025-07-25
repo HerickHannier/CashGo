@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="fase.css" />
     <title>CashGo - Fase 1</title>
-    <style>
-        .hidden {
-            display: none !important;
-        }
-    </style>
 </head>
 
 <body>
-   <div vw class="enabled">
+    <!-- VLibras -->
+    <div vw class="enabled" id="vlibras">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
             <div class="vw-plugin-top-wrapper"></div>
@@ -24,81 +20,78 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
-    <!-- Mascote Vita -->
-    <img src="imagens/Fin-falando.png" alt="Vita" class="vita-img" id="vitaImg" />
-    <div class="speech-bubble" id="vitaSpeech">
-        Olá! Eu sou o Vita! Seu guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
-    </div>
-
-    <!-- Instruções -->
-    <div class="main-content" id="instructionsScreen">
-        <div class="info-card">
-            <ul class="info-list">
-                <li class="info-item">
-                    <span class="info-icon">🎯</span>
-                    <div><span class="info-label">Objetivo:</span> Alcance 10 acertos clicando apenas em itens
-                        essenciais</div>
-                </li>
-                <li class="info-item">
-                    <span class="info-icon">⚠️</span>
-                    <div><span class="info-label">Penalidade:</span> A cada 2 erros você perde 1 acerto</div>
-                </li>
-                <li class="info-item">
-                    <span class="info-icon">🏆</span>
-                    <div><span class="info-label">Vitória:</span> Chegue a 10 acertos para completar o desafio</div>
-                </li>
-            </ul>
-            <button class="start-button" onclick="startGameFromInstructions()">🚀 Começar Jogo</button>
+    <div>
+        <!-- Mascote Vita e Balão -->
+        <img src="imagens/Fin-falando.png" alt="Vita" class="vita-img" id="vitaImg" />
+        <div class="speech-bubble" id="vitaSpeech">
+            Olá! Eu sou o Vita! Seu guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
         </div>
-    </div>
 
-    <!-- Jogo (bolhas) -->
-    <div class="game-container hidden" id="gameContainer">
-        <button id="pauseButton" onclick="togglePause()" disabled class="pause-button">⏸️ Pausar</button>
-        <div class="score">
-            <div>Acertos: <span id="correct">0</span>/10</div>
-            <div>Erros: <span id="wrong">0</span></div>
-            <div class="penalty-warning" id="penaltyWarning" style="display: none;">Próximo erro = -1 acerto!</div>
+        <!-- Instruções -->
+        <div class="main-content" id="instructionsScreen">
+            <div class="info-card">
+                <ul class="info-list">
+                    <li class="info-item"><span class="info-icon">🎯</span>
+                        <div><span class="info-label">Objetivo:</span> Alcance 10 acertos clicando apenas em itens
+                            essenciais</div>
+                    </li>
+                    <li class="info-item"><span class="info-icon">⚠️</span>
+                        <div><span class="info-label">Penalidade:</span> A cada 2 erros você perde 1 acerto</div>
+                    </li>
+                    <li class="info-item"><span class="info-icon">🏆</span>
+                        <div><span class="info-label">Vitória:</span> Chegue a 10 acertos para completar o desafio</div>
+                    </li>
+                </ul>
+                <button class="start-button" onclick="startGameFromInstructions()">🚀 Começar Jogo</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Quiz 4 -->
-    <div class="quiz-item" id="quiz4" style="display: none;">
-        <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
-        <div class="input-group">
-            <input type="text" placeholder="Gasto 1" id="gasto1" />
-            <select id="tipo1">
-                <option value="desejo">Desejo</option>
-                <option value="necessidade">Necessidade</option>
-            </select>
+        <!-- Jogo -->
+        <div class="game-container hidden" id="gameContainer">
+            <button id="pauseButton" onclick="togglePause()" disabled class="pause-button">⏸️ Pausar</button>
+            <div class="score">
+                <div>Acertos: <span id="correct">0</span>/10</div>
+                <div>Erros: <span id="wrong">0</span></div>
+                <div class="penalty-warning" id="penaltyWarning" style="display: none;">Próximo erro = -1 acerto!</div>
+            </div>
         </div>
-        <div class="input-group">
-            <input type="text" placeholder="Gasto 2" id="gasto2" />
-            <select id="tipo2">
-                <option value="desejo">Desejo</option>
-                <option value="necessidade">Necessidade</option>
-            </select>
+
+        <!-- Quiz 4 -->
+        <div class="quiz-item" id="quiz4" style="display: none;">
+            <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
+            <div class="input-group">
+                <input type="text" placeholder="Gasto 1" id="gasto1" />
+                <select id="tipo1">
+                    <option value="desejo">Desejo</option>
+                    <option value="necessidade">Necessidade</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Gasto 2" id="gasto2" />
+                <select id="tipo2">
+                    <option value="desejo">Desejo</option>
+                    <option value="necessidade">Necessidade</option>
+                </select>
+            </div>
+            <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
         </div>
-        <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
-    </div>
 
-    <!-- Quiz 5 -->
-    <div class="quiz-item" id="quiz5" style="display: none;">
-        <div class="fase">
-            <p><strong>Missão com compromisso real</strong> - Topa guardar R$5 até amanhã?</p>
-            <button onclick="aceitarMissao(true)" class="btn">Sim, eu topo!</button>
-            <button onclick="aceitarMissao(false)" class="btn">Não por enquanto</button>
-            <div id="respostaMissao"></div>
+        <!-- Quiz 5 -->
+        <div class="quiz-item" id="quiz5" style="display: none;">
+            <div class="fase">
+                <p><strong>Missão com compromisso real</strong> - Topa guardar R$5 até amanhã?</p>
+                <button onclick="aceitarMissao(true)" class="btn">Sim, eu topo!</button>
+                <button onclick="aceitarMissao(false)" class="btn">Não por enquanto</button>
+                <div id="respostaMissao"></div>
+            </div>
         </div>
+
+        <!-- Toasts -->
+        <div class="toast-container hidden" id="toastContainer"></div>
+
+        <!-- Scripts -->
+        <script src="fase.js"></script>
     </div>
-
-    <!-- Toasts -->
-    <div class="toast-container hidden" id="toastContainer"></div>
-
-
-    <!-- Scripts -->
-    <script src="fase.js"></script>
 </body>
 
 </html>
