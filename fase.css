@@ -245,8 +245,21 @@ p {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    outline: none;
+    border: none;
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.bubble img:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+img:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
 
 .bubble.essential {
