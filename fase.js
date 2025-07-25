@@ -159,6 +159,7 @@ function createBubble() {
     img.alt = isEssential ? 'Item essencial' : 'Item de desejo';
     img.tabIndex = -1;      // ❌ impede foco
     img.draggable = false;  // ❌ impede arrastar a imagem
+    bubble.appendChild(img);
 
     const startX = Math.random() * (window.innerWidth - 90);
     bubble.style.left = startX + 'px';
