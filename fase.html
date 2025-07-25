@@ -4,61 +4,60 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="fase.css">
+    <link rel="stylesheet" href="fase.css" />
     <title>CashGo - Fase 1</title>
+    <style>
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
+    <!-- VLibras -->
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
-    <div class="progress-section">
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
-        <div class="timer" id="timer"></div>
-    </div>
-    <img src="imagens/Fin-falando.png" alt="" class="vita-img">
-    <div class="speech-bubble">
-        Olá! Eu sou o Vita! Sua guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
+    <!-- Mascote Vita -->
+    <img src="imagens/Fin-falando.png" alt="Vita" class="vita-img" id="vitaImg" />
+    <div class="speech-bubble" id="vitaSpeech">
+        Olá! Eu sou o Vita! Seu guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
     </div>
 
-    <div class="quiz-item active" id="quiz1">
-        <p>1. A Júlia já tem um fone Bluetooth, mas agora quer o modelo mais recente...</p>
-        <div class="container_fone">
-            <img src="imagens/fone.png" alt="" class="fone">
-        </div>
-        <div class="fase">
-            <button onclick="responder(this, 'desejo', 'quiz2')">Desejo</button>
-            <button onclick="responder1(this, 'necessidade', 'quiz2')">Necessidade</button>
-        </div>
-    </div>
-
-    <div class="quiz-item" id="quiz2">
-        <p>2. João precisa de um transporte para chegar ao SENAC... isso é?</p>
-        <div class="fase">
-            <button onclick="responder(this, 'necessidade', 'quiz3')">Necessidade</button>
-            <button onclick="responder1(this, 'desejo', 'quiz3')">Desejo</button>
+    <!-- Instruções -->
+    <div class="main-content" id="instructionsScreen">
+        <div class="info-card">
+            <ul class="info-list">
+                <li class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <div><span class="info-label">Objetivo:</span> Alcance 10 acertos clicando apenas em itens
+                        essenciais</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">⚠️</span>
+                    <div><span class="info-label">Penalidade:</span> A cada 2 erros você perde 1 acerto</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">🏆</span>
+                    <div><span class="info-label">Vitória:</span> Chegue a 10 acertos para completar o desafio</div>
+                </li>
+            </ul>
+            <button class="start-button" onclick="startGameFromInstructions()">🚀 Começar Jogo</button>
         </div>
     </div>
 
-    <div class="quiz-item" id="quiz3">
-        <p>3. Camiseta de R$200 da moda:</p>
-        <div class="fase">
-            <button onclick="responder(this, 'desejo', 'quiz4')">Desejo</button>
-            <button onclick="responder1(this, 'necessidade', 'quiz4')">Necessidade</button>
+    <!-- Jogo (bolhas) -->
+    <div class="game-container hidden" id="gameContainer">
+        <button id="pauseButton" onclick="togglePause()" disabled class="pause-button">⏸️ Pausar</button>
+        <div class="score">
+            <div>Acertos: <span id="correct">0</span>/10</div>
+            <div>Erros: <span id="wrong">0</span></div>
+            <div class="penalty-warning" id="penaltyWarning" style="display: none;">Próximo erro = -1 acerto!</div>
         </div>
     </div>
 
-    <div class="quiz-item" id="quiz4">
+    <!-- Quiz 4 -->
+    <div class="quiz-item" id="quiz4" style="display: none;">
         <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
         <div class="input-group">
             <input type="text" placeholder="Gasto 1" id="gasto1" />
@@ -77,7 +76,8 @@
         <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
     </div>
 
-    <div class="quiz-item" id="quiz5">
+    <!-- Quiz 5 -->
+    <div class="quiz-item" id="quiz5" style="display: none;">
         <div class="fase">
             <p><strong>Missão com compromisso real</strong> - Topa guardar R$5 até amanhã?</p>
             <button onclick="aceitarMissao(true)" class="btn">Sim, eu topo!</button>
@@ -85,6 +85,12 @@
             <div id="respostaMissao"></div>
         </div>
     </div>
+
+    <!-- Toasts -->
+    <div class="toast-container hidden" id="toastContainer"></div>
+
+
+    <!-- Scripts -->
     <script src="fase.js"></script>
 </body>
 
