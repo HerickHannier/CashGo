@@ -157,8 +157,8 @@ function createBubble() {
     const img = document.createElement('img');
     img.src = imageSrc;
     img.alt = isEssential ? 'Item essencial' : 'Item de desejo';
-    img.loading = 'lazy'; // Lazy loading para melhor performance
-    bubble.appendChild(img);
+    img.tabIndex = -1;      // ❌ impede foco
+    img.draggable = false;  // ❌ impede arrastar a imagem
 
     const startX = Math.random() * (window.innerWidth - 90);
     bubble.style.left = startX + 'px';
