@@ -22,7 +22,7 @@ const desireItems = [
 ];
 
 let score = {
-    correct: 0,
+    correct: 9,
     wrong: 0
 };
 
@@ -175,9 +175,9 @@ function createBubble() {
 
     // Remover bolha automaticamente após a animação
     //setTimeout(() => {
-        //if (bubble.parentNode && !bubble.classList.contains('clicked')) {
-        //    bubble.remove();
-        //}
+    //if (bubble.parentNode && !bubble.classList.contains('clicked')) {
+    //    bubble.remove();
+    //}
     //}, duration * 1000);
 }
 
@@ -223,7 +223,7 @@ function showQuiz4() {
     gamePaused = false;
     clearTimeout(bubbleCreationInterval);
 
-    // Remover todas as bolhas existentes instantaneamente
+    // Remove todas as bolhas restantes
     const existingBubbles = gameContainer.querySelectorAll('.bubble');
     existingBubbles.forEach(b => b.remove());
 
@@ -231,13 +231,15 @@ function showQuiz4() {
     toastContainer.classList.add('hidden');
 
     setTimeout(() => {
-        const quiz4 = document.getElementById('quiz4');
-        if (quiz4) {
-            quiz4.style.display = 'block';
-            quiz4.classList.add('active');
+        const quiz4Instructions = document.getElementById('quiz4Instructions');
+        if (quiz4Instructions) {
+            quiz4Instructions.style.display = 'block'; // 🔥 Mostra as instruções
+            quiz4Instructions.classList.remove('hidden'); // 🔥 Remove classe se tiver
         }
     }, 500);
 }
+
+
 
 function restartGame() {
     score.correct = 0;
@@ -262,19 +264,21 @@ function restartGame() {
     document.getElementById('instructionsScreen').classList.remove('hidden');
 }
 
+// Começa o jogo criando bolhas automaticamente
 function startGame() {
     if (!gameActive || gamePaused) return;
 
     function scheduleBubble() {
         if (!gameActive || gamePaused) return;
         createBubble();
-        const delay = Math.random() * 800 + 400; // Intervalo otimizado
+        const delay = Math.random() * 800 + 400;
         bubbleCreationInterval = setTimeout(scheduleBubble, delay);
     }
 
     scheduleBubble();
 }
 
+// Avança para o próximo quiz
 function proximo(proximoId) {
     const atual = document.querySelector('.quiz-item.active');
     if (atual) {
@@ -289,17 +293,26 @@ function proximo(proximoId) {
     }
 }
 
-// Inicializar quando a página carregar
+// ✅ INSTRUÇÕES DO QUIZ 4
+function iniciarQuiz4() {
+    document.getElementById("quiz4Instructions").classList.add("hidden");
+    document.getElementById("quiz4").classList.add("active");
+    document.getElementById("quiz4").style.display = "block";
+}
+
+
+// Inicia elementos ao carregar a página
 window.addEventListener('load', () => {
     initializeElements();
     updateScore();
 });
 
-// Otimização para dispositivos móveis
+// Responsividade (opcional)
 window.addEventListener('resize', () => {
-    // Debounce para evitar muitas execuções
     clearTimeout(window.resizeTimeout);
     window.resizeTimeout = setTimeout(() => {
-        // Reposicionar elementos se necessário
+        // ações ao redimensionar
     }, 250);
 });
+
+
