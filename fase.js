@@ -186,10 +186,9 @@ function handleBubbleClick(event) {
 
     const bubble = event.currentTarget;
 
-    // ⚠️ Impede múltiplos cliques
+    // ✅ Impede múltiplos cliques imediatamente
     if (bubble.classList.contains('clicked')) return;
-
-    bubble.classList.add('clicked');
+    bubble.classList.add('clicked'); // Marca como clicada
 
     const isEssential = bubble.dataset.essential === 'true';
 
@@ -209,13 +208,14 @@ function handleBubbleClick(event) {
 
     updateScore();
 
-    // Remove a bolha após animação de clique
+    // ❌ Aguarde 500ms antes de remover a bolha para garantir que o click finalizou
     setTimeout(() => {
         if (bubble.parentNode) {
             bubble.remove();
         }
     }, 500);
 }
+
 
 
 function showQuiz4() {
