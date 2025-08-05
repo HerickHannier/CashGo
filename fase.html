@@ -56,25 +56,57 @@
             </div>
         </div>
 
-        <!-- Quiz 4 -->
-        <div class="quiz-item" id="quiz4" style="display: none;">
-            <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
-            <div class="input-group">
-                <input type="text" placeholder="Gasto 1" id="gasto1" />
-                <select id="tipo1">
-                    <option value="desejo">Desejo</option>
-                    <option value="necessidade">Necessidade</option>
-                </select>
+        <!-- Instruções do Quiz 4 -->
+        <div class="main-content" id="quiz4Instructions" style="display: none;">
+            <div class="info-card">
+                <ul class="info-list">
+                    <li class="info-item">
+                        <span class="info-icon">📝</span>
+                        <div><span class="info-label">Objetivo:</span> Refletir sobre dois gastos reais que você fez
+                            nesta semana.</div>
+                    </li>
+                    <li class="info-item">
+                        <span class="info-icon">🔍</span>
+                        <div><span class="info-label">Análise:</span> Classifique cada gasto como
+                            <strong>Desejo</strong> ou <strong>Necessidade</strong>.
+                        </div>
+                    </li>
+                    <li class="info-item">
+                        <span class="info-icon">🎯</span>
+                        <div><span class="info-label">Dica:</span> Necessidades são essenciais para viver. Desejos são
+                            vontades que você pode adiar.</div>
+                    </li>
+                </ul>
+                <button class="start-button" onclick="iniciarQuiz4()">✏️ Anotar meus gastos</button>
             </div>
-            <div class="input-group">
-                <input type="text" placeholder="Gasto 2" id="gasto2" />
-                <select id="tipo2">
-                    <option value="desejo">Desejo</option>
-                    <option value="necessidade">Necessidade</option>
-                </select>
-            </div>
-            <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
         </div>
+
+            <div class="quiz-item active quiz4" id="quiz4" style="display: none;">
+                <p>4. Que tal anotar dois gastos reais que você teve essa semana?</p>
+                <div class="input-group">
+                    <label for="gasto1" style="display: none;">Gasto 1</label>
+                    <input type="text" placeholder="Ex: Fone Bluetooth novo" id="gasto1" />
+
+                    <label for="tipo1" style="display: none;">Tipo 1</label>
+                    <select id="tipo1">
+                        <option value="desejo">Desejo</option>
+                        <option value="necessidade">Necessidade</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="gasto2" style="display: none;">Gasto 2</label>
+                    <input type="text" placeholder="Ex: Conta de energia" id="gasto2" />
+
+                    <label for="tipo2" style="display: none;">Tipo 2</label>
+                    <select id="tipo2">
+                        <option value="desejo">Desejo</option>
+                        <option value="necessidade">Necessidade</option>
+                    </select>
+                </div>
+
+                <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
+            </div>
 
         <!-- Quiz 5 -->
         <div class="quiz-item" id="quiz5" style="display: none;">
