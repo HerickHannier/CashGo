@@ -22,7 +22,7 @@ const desireItems = [
 ];
 
 let score = {
-    correct: 9,
+    correct: 0,
     wrong: 0
 };
 
