@@ -22,7 +22,6 @@ p {
 
 /* Fase roxa */
 .fase {
-    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%) !important;
     position: absolute;
     bottom: 0%;
     width: 100vw;
@@ -496,7 +495,6 @@ ul {
 
 /* Estilo para a tela de anotação de gastos (Quiz 4) */
 #quiz4 {
-    background: linear-gradient(135deg, #6C3DD0 0%, #5B2FB8 100%);
     padding: 30px 20px;
     border-radius: 25px;
     max-width: 500px;
