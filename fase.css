@@ -3,6 +3,7 @@
 }
 
 html,
+
 body {
     margin: 0;
     padding: 0;
@@ -552,4 +553,92 @@ ul {
     #quiz4 p {
         font-size: 1rem;
     }
+}
+
+/* Estilo para a Missão Quiz 5 */
+.missao-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 25px 25px 0 0;
+    padding: 30px 20px;
+    margin: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 100vw;
+    z-index: 1000;
+}
+
+.missao-card p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.missao-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.missao-btn {
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.missao-btn.confirmar {
+    background-color: #FFD700;
+    color: #2D1B69;
+}
+
+.missao-btn.confirmar:hover {
+    background-color: #fcd200;
+    transform: scale(1.02);
+}
+
+.missao-btn.recusar {
+    background-color: #5B2FB8;
+    color: white;
+    border: 2px solid #fff;
+}
+
+.missao-btn.recusar:hover {
+    background-color: #4A23A8;
+    transform: scale(1.02);
+}
+
+#respostaMissao {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#qrcodeCard img {
+    width: 100%;
+    max-width: 200px;
+    border: 2px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+#quiz5Instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    flex-direction: column;
 }
