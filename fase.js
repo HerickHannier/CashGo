@@ -1,4 +1,4 @@
-// Listas de imagens com caminhos locais
+// Lista de imagens de itens essenciais
 const essentialItems = [
     'imagens/imgBolhas/esseciais/pao.jpg',
     'imagens/imgBolhas/esseciais/agua.jpeg',
@@ -10,6 +10,7 @@ const essentialItems = [
     'imagens/imgBolhas/esseciais/cama.png',
 ];
 
+// Lista de imagens de itens de desejo
 const desireItems = [
     'imagens/imgBolhas/desejos/videogame.png',
     'imagens/imgBolhas/desejos/chocolate.png',
@@ -21,11 +22,13 @@ const desireItems = [
     'imagens/imgBolhas/desejos/sorvete.png',
 ];
 
+// Pontuação inicial
 let score = {
-    correct: 0,
+    correct: 9,
     wrong: 0
 };
 
+// Elementos principais do jogo
 let gameContainer = document.getElementById('gameContainer');
 let toastContainer = document.getElementById('toastContainer');
 let gameActive = false;
@@ -33,14 +36,14 @@ let gamePaused = false;
 let bubbleCreationInterval;
 let pauseButton = document.getElementById('pauseButton');
 
-// Cache para elementos DOM
+// Cache para elementos de pontuação
 const scoreElements = {
     correct: null,
     wrong: null,
     penaltyWarning: null
 };
 
-// Inicializar cache de elementos
+// Inicializa elementos do DOM
 function initializeElements() {
     scoreElements.correct = document.getElementById('correct');
     scoreElements.wrong = document.getElementById('wrong');
@@ -50,23 +53,21 @@ function initializeElements() {
     pauseButton = document.getElementById('pauseButton');
 }
 
+// Atualiza pontuação na tela
 function updateScore() {
     if (!scoreElements.correct) initializeElements();
 
     scoreElements.correct.textContent = score.correct;
     scoreElements.wrong.textContent = score.wrong;
 
-    if (score.wrong % 2 === 1) {
-        scoreElements.penaltyWarning.style.display = 'block';
-    } else {
-        scoreElements.penaltyWarning.style.display = 'none';
-    }
+    // Exibe aviso de penalidade a cada 2 erros
+    scoreElements.penaltyWarning.style.display = score.wrong % 2 === 1 ? 'block' : 'none';
 
-    if (score.correct >= 10) {
-        showQuiz4();
-    }
+    // Avança para o quiz 4 se atingir 10 acertos
+    if (score.correct >= 10) showQuiz4();
 }
 
+// Inicia o jogo a partir das instruções
 function startGameFromInstructions() {
     document.getElementById('instructionsScreen').classList.add('hidden');
     document.getElementById('vlibras').classList.add('hidden');
@@ -83,6 +84,7 @@ function startGameFromInstructions() {
     startGame();
 }
 
+// Pausa e continua o jogo
 function togglePause() {
     if (!gameActive) return;
 
@@ -102,11 +104,13 @@ function togglePause() {
     }
 }
 
+// Sorteia um item aleatório
 function getRandomItem(isEssential) {
     const items = isEssential ? essentialItems : desireItems;
     return items[Math.floor(Math.random() * items.length)];
 }
 
+// Exibe uma notificação toast
 function showToast(type, title, message, duration = 3000) {
     const existingToasts = toastContainer.querySelectorAll('.toast');
     if (existingToasts.length >= 2) {
@@ -131,11 +135,7 @@ function showToast(type, title, message, duration = 3000) {
     `;
 
     toastContainer.appendChild(toast);
-
-    // Usar requestAnimationFrame para melhor performance
-    requestAnimationFrame(() => {
-        toast.classList.add('show');
-    });
+    requestAnimationFrame(() => toast.classList.add('show'));
 
     setTimeout(() => {
         toast.classList.remove('show');
@@ -143,6 +143,7 @@ function showToast(type, title, message, duration = 3000) {
     }, duration);
 }
 
+// Cria uma bolha no jogo
 function createBubble() {
     if (!gameActive || gamePaused) return;
 
@@ -158,37 +159,28 @@ function createBubble() {
     const img = document.createElement('img');
     img.src = imageSrc;
     img.alt = isEssential ? 'Item essencial' : 'Item de desejo';
-    img.tabIndex = -1;      // ❌ impede foco
-    img.draggable = false;  // ❌ impede arrastar a imagem
+    img.tabIndex = -1;
+    img.draggable = false;
     bubble.appendChild(img);
 
     const startX = Math.random() * (window.innerWidth - 90);
     bubble.style.left = startX + 'px';
     bubble.style.bottom = '-100px';
 
-    const duration = Math.random() * 3 + 4; // Reduzido para mais dinamismo
+    const duration = Math.random() * 3 + 4;
     bubble.style.animation = `bubbleRise ${duration}s linear forwards`;
 
-    bubble.addEventListener('click', handleBubbleClick, { once: true }); // Usar once: true para melhor performance
-
+    bubble.addEventListener('click', handleBubbleClick, { once: true });
     gameContainer.appendChild(bubble);
-
-    // Remover bolha automaticamente após a animação
-    //setTimeout(() => {
-    //if (bubble.parentNode && !bubble.classList.contains('clicked')) {
-    //    bubble.remove();
-    //}
-    //}, duration * 1000);
 }
 
+// Quando usuário clica em uma bolha
 function handleBubbleClick(event) {
     if (!gameActive || gamePaused) return;
 
     const bubble = event.currentTarget;
-
-    // ✅ Impede múltiplos cliques imediatamente
     if (bubble.classList.contains('clicked')) return;
-    bubble.classList.add('clicked'); // Marca como clicada
+    bubble.classList.add('clicked');
 
     const isEssential = bubble.dataset.essential === 'true';
 
@@ -197,7 +189,6 @@ function handleBubbleClick(event) {
         showToast('success', 'Acertou!', 'Isso é essencial para a vida!');
     } else {
         score.wrong++;
-
         if (score.wrong % 2 === 0 && score.correct > 0) {
             score.correct--;
             showToast('penalty', 'Penalidade!', `2 erros = -1 acerto! Agora você tem ${score.correct} acertos.`);
@@ -207,23 +198,15 @@ function handleBubbleClick(event) {
     }
 
     updateScore();
-
-    // ❌ Aguarde 500ms antes de remover a bolha para garantir que o click finalizou
-    setTimeout(() => {
-        if (bubble.parentNode) {
-            bubble.remove();
-        }
-    }, 500);
+    setTimeout(() => { if (bubble.parentNode) bubble.remove(); }, 500);
 }
 
-
-
+// Mostra instruções do quiz 4
 function showQuiz4() {
     gameActive = false;
     gamePaused = false;
     clearTimeout(bubbleCreationInterval);
 
-    // Remove todas as bolhas restantes
     const existingBubbles = gameContainer.querySelectorAll('.bubble');
     existingBubbles.forEach(b => b.remove());
 
@@ -233,14 +216,13 @@ function showQuiz4() {
     setTimeout(() => {
         const quiz4Instructions = document.getElementById('quiz4Instructions');
         if (quiz4Instructions) {
-            quiz4Instructions.style.display = 'block'; // 🔥 Mostra as instruções
-            quiz4Instructions.classList.remove('hidden'); // 🔥 Remove classe se tiver
+            quiz4Instructions.style.display = 'block';
+            quiz4Instructions.classList.remove('hidden');
         }
     }, 500);
 }
 
-
-
+// Reinicia o jogo do começo
 function restartGame() {
     score.correct = 0;
     score.wrong = 0;
@@ -264,7 +246,7 @@ function restartGame() {
     document.getElementById('instructionsScreen').classList.remove('hidden');
 }
 
-// Começa o jogo criando bolhas automaticamente
+// Inicia o jogo com bolhas automáticas
 function startGame() {
     if (!gameActive || gamePaused) return;
 
@@ -278,7 +260,7 @@ function startGame() {
     scheduleBubble();
 }
 
-// Avança para o próximo quiz
+// Passa para próximo quiz
 function proximo(proximoId) {
     const atual = document.querySelector('.quiz-item.active');
     if (atual) {
@@ -286,33 +268,79 @@ function proximo(proximoId) {
         atual.style.display = 'none';
     }
 
-    const proximo = document.getElementById(proximoId);
-    if (proximo) {
-        proximo.style.display = 'block';
-        proximo.classList.add('active');
+    if (proximoId === "quiz5") {
+        const instr = document.getElementById("quiz5Instructions");
+        instr.style.display = "flex";
+        instr.classList.remove("hidden");
+    } else {
+        const proximo = document.getElementById(proximoId);
+        if (proximo) {
+            proximo.style.display = 'block';
+            proximo.classList.add('active');
+        }
     }
 }
 
-// ✅ INSTRUÇÕES DO QUIZ 4
+// Inicia o quiz 4
 function iniciarQuiz4() {
     document.getElementById("quiz4Instructions").classList.add("hidden");
     document.getElementById("quiz4").classList.add("active");
     document.getElementById("quiz4").style.display = "block";
 }
 
+// Inicia o quiz 5
+function iniciarQuiz5() {
+    document.getElementById("quiz5Instructions").classList.add("hidden");
+    document.getElementById("quiz5").classList.add("active");
+    document.getElementById("quiz5").style.display = "block";
+}
 
-// Inicia elementos ao carregar a página
+// Mostra resposta da missão
+function aceitarMissao(topou) {
+    const resposta = document.getElementById('respostaMissao');
+    if (topou) {
+        resposta.innerHTML = "🎉 Parabéns! Sua missão começa agora. O valor será mantido em segurança.";
+    } else {
+        resposta.innerHTML = "😌 Sem problemas! Quando estiver pronto, voltamos com a missão.";
+    }
+}
+
+// Ao carregar a página
 window.addEventListener('load', () => {
     initializeElements();
     updateScore();
 });
 
-// Responsividade (opcional)
+// Ação ao redimensionar (reserva)
 window.addEventListener('resize', () => {
     clearTimeout(window.resizeTimeout);
     window.resizeTimeout = setTimeout(() => {
-        // ações ao redimensionar
+        // ação pós-resize
     }, 250);
 });
 
+function aceitarMissao(topou) {
+    const resposta = document.getElementById('respostaMissao');
+    const qrCard = document.getElementById('qrcodeCard');
 
+    if (topou) {
+        resposta.innerHTML = "🎉 Parabéns! Sua missão começa agora. O valor será mantido em segurança.";
+
+        // Mostra o cartão do QR Code
+        if (qrCard) {
+            qrCard.classList.remove('hidden');
+            qrCard.style.display = "flex";
+            qrCard.style.flexDirection = "column";
+            qrCard.style.alignItems = "center";
+            qrCard.style.justifyContent = "center";
+        }
+
+    } else {
+        resposta.innerHTML = "😌 Sem problemas! Quando estiver pronto, voltamos com a missão.";
+
+        // Garante que o QRCode fique oculto caso o usuário desista
+        if (qrCard) {
+            qrCard.classList.add('hidden');
+        }
+    }
+}
