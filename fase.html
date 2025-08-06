@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <!-- VLibras -->
+    <!-- VLibras (acessibilidade) -->
     <div vw class="enabled" id="vlibras">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -17,113 +17,146 @@
         </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-    <div>
-        <!-- Mascote Vita e Balão -->
-        <img src="imagens/Fin-falando.png" alt="Vita" class="vita-img" id="vitaImg" />
-        <div class="speech-bubble" id="vitaSpeech">
-            Olá! Eu sou o Vita! Seu guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
-        </div>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
-        <!-- Instruções -->
-        <div class="main-content" id="instructionsScreen">
-            <div class="info-card">
-                <ul class="info-list">
-                    <li class="info-item"><span class="info-icon">🎯</span>
-                        <div><span class="info-label">Objetivo:</span> Alcance 10 acertos clicando apenas em itens
-                            essenciais</div>
-                    </li>
-                    <li class="info-item"><span class="info-icon">⚠️</span>
-                        <div><span class="info-label">Penalidade:</span> A cada 2 erros você perde 1 acerto</div>
-                    </li>
-                    <li class="info-item"><span class="info-icon">🏆</span>
-                        <div><span class="info-label">Vitória:</span> Chegue a 10 acertos para completar o desafio</div>
-                    </li>
-                </ul>
-                <button class="start-button" onclick="startGameFromInstructions()">🚀 Começar Jogo</button>
-            </div>
-        </div>
-
-        <!-- Jogo -->
-        <div class="game-container hidden" id="gameContainer">
-            <button id="pauseButton" onclick="togglePause()" disabled class="pause-button">⏸️ Pausar</button>
-            <div class="score">
-                <div>Acertos: <span id="correct">0</span>/10</div>
-                <div>Erros: <span id="wrong">0</span></div>
-                <div class="penalty-warning" id="penaltyWarning" style="display: none;">Próximo erro = -1 acerto!</div>
-            </div>
-        </div>
-
-        <!-- Instruções do Quiz 4 -->
-        <div class="main-content" id="quiz4Instructions" style="display: none;">
-            <div class="info-card">
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-icon">📝</span>
-                        <div><span class="info-label">Objetivo:</span> Refletir sobre dois gastos reais que você fez
-                            nesta semana.</div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-icon">🔍</span>
-                        <div><span class="info-label">Análise:</span> Classifique cada gasto como
-                            <strong>Desejo</strong> ou <strong>Necessidade</strong>.
-                        </div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-icon">🎯</span>
-                        <div><span class="info-label">Dica:</span> Necessidades são essenciais para viver. Desejos são
-                            vontades que você pode adiar.</div>
-                    </li>
-                </ul>
-                <button class="start-button" onclick="iniciarQuiz4()">✏️ Anotar meus gastos</button>
-            </div>
-        </div>
-
-            <div class="quiz-item active quiz4" id="quiz4" style="display: none;">
-                <p>4. Que tal anotar dois gastos reais que você teve essa semana?</p>
-                <div class="input-group">
-                    <label for="gasto1" style="display: none;">Gasto 1</label>
-                    <input type="text" placeholder="Ex: Fone Bluetooth novo" id="gasto1" />
-
-                    <label for="tipo1" style="display: none;">Tipo 1</label>
-                    <select id="tipo1">
-                        <option value="desejo">Desejo</option>
-                        <option value="necessidade">Necessidade</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="gasto2" style="display: none;">Gasto 2</label>
-                    <input type="text" placeholder="Ex: Conta de energia" id="gasto2" />
-
-                    <label for="tipo2" style="display: none;">Tipo 2</label>
-                    <select id="tipo2">
-                        <option value="desejo">Desejo</option>
-                        <option value="necessidade">Necessidade</option>
-                    </select>
-                </div>
-
-                <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
-            </div>
-
-        <!-- Quiz 5 -->
-        <div class="quiz-item" id="quiz5" style="display: none;">
-            <div class="fase">
-                <p><strong>Missão com compromisso real</strong> - Topa guardar R$5 até amanhã?</p>
-                <button onclick="aceitarMissao(true)" class="btn">Sim, eu topo!</button>
-                <button onclick="aceitarMissao(false)" class="btn">Não por enquanto</button>
-                <div id="respostaMissao"></div>
-            </div>
-        </div>
-
-        <!-- Toasts -->
-        <div class="toast-container hidden" id="toastContainer"></div>
-
-        <!-- Scripts -->
-        <script src="fase.js"></script>
+    <!-- Mascote Vita com balão de fala -->
+    <img src="imagens/Fin-falando.png" alt="Vita" class="vita-img" id="vitaImg" />
+    <div class="speech-bubble" id="vitaSpeech">
+        Olá! Eu sou o Vita! Seu guia nessa jornada financeira! Vamos começar diferenciando Desejo e Necessidade?
     </div>
+
+    <!-- Instruções do Jogo de Bolhas -->
+    <div class="main-content" id="instructionsScreen">
+        <div class="info-card">
+            <ul class="info-list">
+                <li class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <div><span class="info-label">Objetivo:</span> Alcance 10 acertos clicando apenas em itens
+                        essenciais</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">⚠️</span>
+                    <div><span class="info-label">Penalidade:</span> A cada 2 erros você perde 1 acerto</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">🏆</span>
+                    <div><span class="info-label">Vitória:</span> Chegue a 10 acertos para completar o desafio</div>
+                </li>
+            </ul>
+            <button class="start-button" onclick="startGameFromInstructions()">🚀 Começar Jogo</button>
+        </div>
+    </div>
+
+    <!-- Jogo das Bolhas -->
+    <div class="game-container hidden" id="gameContainer">
+        <button id="pauseButton" onclick="togglePause()" disabled class="pause-button">⏸️ Pausar</button>
+        <div class="score">
+            <div>Acertos: <span id="correct">0</span>/10</div>
+            <div>Erros: <span id="wrong">0</span></div>
+            <div class="penalty-warning" id="penaltyWarning" style="display: none;">Próximo erro = -1 acerto!</div>
+        </div>
+    </div>
+
+    <!-- Instruções do Quiz 4 -->
+    <div class="main-content hidden" id="quiz4Instructions">
+        <div class="info-card">
+            <ul class="info-list">
+                <li class="info-item">
+                    <span class="info-icon">📝</span>
+                    <div><span class="info-label">Objetivo:</span> Refletir sobre dois gastos reais que você fez nesta
+                        semana.</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">🔍</span>
+                    <div><span class="info-label">Análise:</span> Classifique cada gasto como <strong>Desejo</strong> ou
+                        <strong>Necessidade</strong>.</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <div><span class="info-label">Dica:</span> Necessidades são essenciais para viver. Desejos são
+                        vontades que você pode adiar.</div>
+                </li>
+            </ul>
+            <button class="start-button" onclick="iniciarQuiz4()">✏️ Anotar meus gastos</button>
+        </div>
+    </div>
+
+    <!-- Quiz 4 - Anotar Gastos -->
+    <div class="quiz-item" id="quiz4">
+        <p><strong>4. Que tal anotar dois gastos reais que você teve essa semana?</strong></p>
+        <div class="input-group">
+            <input type="text" placeholder="Gasto 1" id="gasto1" />
+            <select id="tipo1">
+                <option value="desejo">Desejo</option>
+                <option value="necessidade">Necessidade</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Gasto 2" id="gasto2" />
+            <select id="tipo2">
+                <option value="desejo">Desejo</option>
+                <option value="necessidade">Necessidade</option>
+            </select>
+        </div>
+        <button class="btn" onclick="proximo('quiz5')">Salvar meus gastos</button>
+    </div>
+
+    <!-- Instruções Quiz 5 -->
+    <div class="main-content hidden" id="quiz5Instructions">
+        <div class="info-card">
+            <ul class="info-list">
+                <li class="info-item">
+                    <span class="info-icon">💰</span>
+                    <div><span class="info-label">Missão:</span> Topa guardar R$5 até amanhã?</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">🔒</span>
+                    <div><span class="info-label">Segurança:</span> O valor será mantido seguro e poderá ser retirado
+                        depois.</div>
+                </li>
+                <li class="info-item">
+                    <span class="info-icon">💡</span>
+                    <div><span class="info-label">Importância:</span> Guardar dinheiro ajuda a criar o hábito de
+                        planejamento financeiro.</div>
+                </li>
+            </ul>
+            <button class="start-button" onclick="iniciarQuiz5()">👍 Iniciar missão</button>
+        </div>
+    </div>
+
+    <!-- Quiz 5 - Missão -->
+    <div class="quiz-item" id="quiz5">
+        <div class="missao-card">
+            <p><strong>Missão com compromisso real</strong><br>Topa guardar R$5 até amanhã?</p>
+            <div class="missao-botoes">
+                <button onclick="aceitarMissao(true)" class="missao-btn confirmar">Sim, eu topo!</button>
+                <button onclick="aceitarMissao(false)" class="missao-btn recusar">Não por enquanto</button>
+            </div>
+            <div id="respostaMissao"></div>
+        </div>
+    </div>
+
+    <!-- Cartão do QR Code após aceitar a missão -->
+    <div class="main-content hidden" id="qrcodeCard">
+        <div class="info-card">
+            <p style="text-align:center; color:white; font-weight:bold;">
+                🔒 Sua missão começou!<br> Faça um Pix de R$5 para ativar:
+            </p>
+            <div style="display:flex; justify-content:center; margin: 20px 0;">
+                <img src="imagens/qrcode-pix.png" alt="QR Code do Pix" style="max-width:200px; border-radius:12px;" />
+            </div>
+            <p style="text-align:center; color:white; font-size:0.9rem;">
+                O valor ficará seguro e será liberado apenas após o prazo da missão. 🕒
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Toast de notificações -->
+    <div class="toast-container hidden" id="toastContainer"></div>
+
+    <!-- Script principal -->
+    <script src="fase.js"></script>
 </body>
 
 </html>
