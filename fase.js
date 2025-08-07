@@ -24,7 +24,7 @@ const desireItems = [
 
 // Pontuação inicial
 let score = {
-    correct: 9,
+    correct: 0,
     wrong: 0
 };
 
